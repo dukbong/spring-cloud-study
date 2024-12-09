@@ -1,0 +1,18 @@
+server:
+  port: 0 # random port number
+
+spring:
+  application:
+    # Eureka Server에서 해당 이름이 Application의 이름으로 들어간다.
+    name: cloud-user-service
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true # Eureka Server에 등록하겠다는 설정
+    # The server will register itself with the Eureka Server.
+    fetch-registry: true # Eureka Server에서 주기적으로 최신 서버 정보를 받겠다는 설정
+    # The server will periodically fetch information about registered instances (servers) from the Eureka Server
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
