@@ -26,6 +26,7 @@ public class CustomFilter extends AbstractGatewayFilterFactory<CustomFilter.Conf
 
             log.info("Custom PRE filter : request id -> {}", request.getId());
             log.info("Custom PRE filter : request uri -> {}", request.getURI());
+            // Mono는 비동기에서 결과가 단건일 경우 사용된다.
             return chain.filter(exchange).then(Mono.fromRunnable(() -> {
                 log.info("Custom POST filter : response code -> {}", response.getStatusCode());
             }));
