@@ -13,6 +13,12 @@ spring:
             preLogger: true
             postLogger: true
       routes:
+        - id: user-service
+          uri: lb://CLOUD-USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+
+#        예제-------------------------------------------------------------
         - id: first-service
           uri: lb://CLOUD-EX-FIRST # Eureka 사용해서 매핑 시키기
 #          uri: http://localhost:8081/ # port 번호를 사용해서 매핑 시키기
