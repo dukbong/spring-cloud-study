@@ -21,6 +21,10 @@ spring:
           uri: lb://CLOUD-CATALOG-SERVICE
           predicates:
             - Path=/catalog-service/**
+        - id: order-service
+          uri: lb://CLOUD-ORDER-SERVICE
+          predicates:
+            - Path=/order-service/**
 
 #        예제-------------------------------------------------------------
         - id: first-service

@@ -5,7 +5,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import study.cloud_user_service.dto.RequestUser;
+import study.cloud_user_service.request.RequestUser;
 import study.cloud_user_service.response.UserInfo;
 import study.cloud_user_service.response.UserResponseType;
 import study.cloud_user_service.service.UserService;
@@ -39,7 +39,7 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<UserResponseType<Long>> createUser(@RequestBody RequestUser request) {
-        Long saveUserId = userServiceImpl.createUser(request.convertToUserDto());
+        Long saveUserId = userServiceImpl.createUser(request.toUserDto());
         return ResponseEntity.status(HttpStatus.CREATED).body(new UserResponseType<>(saveUserId));
     }
 

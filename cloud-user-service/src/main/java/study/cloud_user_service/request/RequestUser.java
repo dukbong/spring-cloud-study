@@ -1,9 +1,10 @@
-package study.cloud_user_service.dto;
+package study.cloud_user_service.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import study.cloud_user_service.dto.UserDto;
 
 @Data
 public class RequestUser {
@@ -21,7 +22,7 @@ public class RequestUser {
     private String pwd;
 
 
-    public UserDto convertToUserDto() {
+    public UserDto toUserDto() {
         return new UserDto(this.email, this.name, this.pwd);
     }
 }
