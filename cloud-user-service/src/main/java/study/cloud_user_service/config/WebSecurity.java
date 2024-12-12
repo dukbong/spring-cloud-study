@@ -27,8 +27,8 @@ public class WebSecurity {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/actuator/**", "/user-service/health_check").permitAll();
-                    auth.requestMatchers(HttpMethod.POST, "/users").permitAll();
-                    auth.requestMatchers("/users").permitAll();
+                    auth.requestMatchers(HttpMethod.POST, "/user-service/users/**").permitAll();
+                    auth.requestMatchers("/user-service/users/**").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .headers(header -> {

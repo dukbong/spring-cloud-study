@@ -49,4 +49,10 @@ public class UserController {
         return ResponseEntity.ok().body(new UserResponseType<>(findUsers));
     }
 
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<UserResponseType<UserInfo>> getUser(@PathVariable("userId") String userId) {
+        UserInfo result = userServiceImpl.getUserByUserId(userId);
+        return ResponseEntity.ok().body(new UserResponseType<>(result));
+    }
+
 }

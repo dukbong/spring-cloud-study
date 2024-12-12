@@ -6,10 +6,12 @@ import study.cloud_user_service.entity.User;
 import study.cloud_user_service.response.UserInfo;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select new study.cloud_user_service.response.UserInfo(u.email, u.name, u.userId, u.createdDate) from User u")
     List<UserInfo> findAllUserInfo();
 
+    Optional<User> findByUserId(String userId);
 }

@@ -12,5 +12,5 @@ public interface UserService {
     List<UserInfo> getAllUsers();
     List<UserInfo> getAllUsers2();
 
-    UserInfo getUserByUserId(Long userId);
+    UserInfo getUserByUserId(String userId);
 }

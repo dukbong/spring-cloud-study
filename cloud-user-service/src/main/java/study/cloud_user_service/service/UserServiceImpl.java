@@ -1,10 +1,12 @@
 package study.cloud_user_service.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import study.cloud_user_service.dto.UserDto;
 import study.cloud_user_service.entity.User;
+import study.cloud_user_service.exception.UserNotFoundException;
 import study.cloud_user_service.mapper.ConvertMapper;
 import study.cloud_user_service.repository.UserRepository;
 import study.cloud_user_service.response.OrderInfo;
@@ -33,6 +35,9 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<UserInfo> getAllUsers() {
         List<User> findUsers = userRepository.findAll();
+        if(findUsers.isEmpty()) {
+            throw new UserNotFoundException("Could not find any users.", HttpStatus.BAD_REQUEST);
+        }
         return findUsers.stream().map(u -> new UserInfo(u.getEmail(), u.getName(), u.getUserId(), u.getCreatedDate())).toList();
     }
     @Override
@@ -42,10 +47,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserInfo getUserByUserId(Long userId) {
-        Optional<User> optionalUser = userRepository.findById(userId);
+    public UserInfo getUserByUserId(String userId) {
+        Optional<User> optionalUser = userRepository.findByUserId(userId);
         if(optionalUser.isEmpty()) {
-            throw new UsernameNotFoundException(String.format("Could not find user for getUserByUserId( %s ).", userId));
+            throw new UserNotFoundException(String.format("Could not find user for getUserByUserId( %s ).", userId), HttpStatus.BAD_REQUEST);
         }
         User user = optionalUser.get();
         // 임시
