@@ -2,8 +2,10 @@ package study.cloud_user_service.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import study.cloud_user_service.config.detail.CustomUserDetail;
 import study.cloud_user_service.dto.UserDto;
 import study.cloud_user_service.entity.User;
 import study.cloud_user_service.exception.UserNotFoundException;
@@ -58,4 +60,13 @@ public class UserServiceImpl implements UserService{
         return new UserInfo(user.getEmail(), user.getName(), user.getUserId(), user.getCreatedDate(), orderInfoList);
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
+        Optional<User> findUser = userRepository.findByEmail(userEmail);
+        if(findUser.isEmpty()) {
+            throw new UserNotFoundException("User not found Email = " + userEmail, HttpStatus.BAD_REQUEST);
+        }
+        User user = findUser.get();
+        return new CustomUserDetail(user.getEmail(), user.getEncryptedPwd(), user.getUserId(), /* 권한 */new ArrayList<>());
+    }
 }

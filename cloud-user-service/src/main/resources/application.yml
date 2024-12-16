@@ -1,5 +1,6 @@
 server:
   port: 0 # random port number
+  forward-headers-strategy: framework
 
 spring:
   application:
@@ -45,3 +46,8 @@ eureka:
 
 greeting:
   message: Welcome to the Simple E-commerce.
+
+
+token:
+  expiration_time: 86400000
+  secret: jwt_token_secret_key_test

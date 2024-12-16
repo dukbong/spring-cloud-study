@@ -14,7 +14,6 @@ import study.cloud_user_service.vo.Greeting;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-service")
 @RequiredArgsConstructor
 public class UserController {
 
