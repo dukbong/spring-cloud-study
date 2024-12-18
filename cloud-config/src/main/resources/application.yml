@@ -9,5 +9,12 @@ spring:
     config:
       server:
         git:
-          uri: file:///C:/spring-cloud-study # .git이 있는 루트 파일
-          searchPaths: git-local-repo # 하위 디렉토리의 경우 searchPaths를 통해 지정해줘야한다.
+#          파일 형태로 읽기
+#          uri: file:///C:/spring-cloud-study # .git이 있는 루트 파일
+#          searchPaths: git-local-repo # 하위 디렉토리의 경우 searchPaths를 통해 지정해줘야한다.
+#          git hub 주소 기반
+          uri: https://github.com/dukbong/spring-cloud-study
+          search-paths: git-local-repo
+#          private repo일 경우
+#          username: [username]
+#          password: [password]
