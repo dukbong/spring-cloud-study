@@ -53,7 +53,7 @@ greeting:
 #  secret: jwt_token_secret_key_test
 
 management:
-  endpoint:
+  endpoints:
     web:
       exposure:
         include: refresh, health, beans

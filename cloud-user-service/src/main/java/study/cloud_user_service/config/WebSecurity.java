@@ -56,7 +56,7 @@ public class WebSecurity {
                 .csrf(AbstractHttpConfigurer::disable)
 
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/**").access(this::hasIpAddress);
+//                    auth.requestMatchers("/**").access(this::hasIpAddress);
                     auth.requestMatchers("/actuator/**", "/health_check").permitAll();
                     auth.requestMatchers(HttpMethod.POST, "/users/**", "/login").permitAll();
                     auth.requestMatchers("/users/**").permitAll();
