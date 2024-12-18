@@ -58,6 +58,7 @@ public class WebSecurity {
                 .authorizeHttpRequests(auth -> {
 //                    auth.requestMatchers("/**").access(this::hasIpAddress);
                     auth.requestMatchers("/actuator/**", "/health_check").permitAll();
+                    auth.requestMatchers(HttpMethod.POST, "/actuator/**").permitAll();
                     auth.requestMatchers(HttpMethod.POST, "/users/**", "/login").permitAll();
                     auth.requestMatchers("/users/**").permitAll();
                     auth.anyRequest().authenticated();
