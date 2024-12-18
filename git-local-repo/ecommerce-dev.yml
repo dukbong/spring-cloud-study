@@ -1,6 +1,6 @@
 token:
   expiration_time: 86400000
-  secret: jwt_token_secret_key_test_default
+  secret: jwt_token_secret_key_test_dev
 
 gateway:
   ip: 192.168.1.210
