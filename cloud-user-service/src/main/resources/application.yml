@@ -7,10 +7,6 @@ spring:
     # Eureka Server에서 해당 이름이 Application의 이름으로 들어간다.
     name: cloud-user-service
 
-  cloud:
-    config:
-      enabled: true
-
   jpa:
     hibernate:
       ddl-auto: create
@@ -60,4 +56,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans
+        include: ["refresh", "health", "beans"]
