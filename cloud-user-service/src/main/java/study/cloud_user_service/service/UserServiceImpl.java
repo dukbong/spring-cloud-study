@@ -18,6 +18,7 @@ import study.cloud_user_service.mapper.ConvertMapper;
 import study.cloud_user_service.repository.UserRepository;
 import study.cloud_user_service.response.OrderInfo;
 import study.cloud_user_service.response.UserInfo;
+import study.cloud_user_service.template.GetOrderResponseWrapper;
 
 import java.util.*;
 
@@ -61,11 +62,11 @@ public class UserServiceImpl implements UserService{
         User user = optionalUser.get();
 //        List<OrderInfo> orderInfoList = new ArrayList<>();
         String orderUrl = String.format(Objects.requireNonNull(env.getProperty("order_service.url")), userId);
-        ResponseEntity<List<OrderInfo>> orderInfoListResult = restTemplate.exchange(orderUrl,
+        ResponseEntity<GetOrderResponseWrapper> orderInfoListResult = restTemplate.exchange(orderUrl,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<OrderInfo>>() {});
-        return new UserInfo(user.getEmail(), user.getName(), user.getUserId(), user.getCreatedDate(), orderInfoListResult.getBody());
+                new ParameterizedTypeReference<>() {});
+        return new UserInfo(user.getEmail(), user.getName(), user.getUserId(), user.getCreatedDate(), Objects.requireNonNull(orderInfoListResult.getBody()).getData());
     }
 
     @Override

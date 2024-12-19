@@ -16,4 +16,5 @@ gateway:
 
 
 order_service:
-  url: http://127.0.0.1:8000/order-service/%s/orders
+  # url: http://127.0.0.1:8000/order-service/%s/orders <<< url 값이 바뀌면 모두 찾아가야 하지만
+  url: http://ORDER-SERVICE/order-service/%s/orders # <<< 이렇게 eureka 서버에 등록된 걸 적어줘도 된다. 단, 해당 properties를 사용하는 곳에서 @LoadBalanced를 @Bean 등록시 해줘야한다.
