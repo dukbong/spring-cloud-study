@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/order-service")
 public class OrderController {
 
     private final Environment env;
