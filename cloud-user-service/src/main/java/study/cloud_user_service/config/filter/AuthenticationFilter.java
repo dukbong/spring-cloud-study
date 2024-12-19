@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -24,12 +26,19 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
 @Slf4j
+@RefreshScope
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    @Value("${token.expiration_time}")
-    private long tokenExpirationTime;
-    @Value("${token.secret}")
-    private String tokenSecret;
+//    @Value("${token.expiration_time}")
+//    private long tokenExpirationTime;
+//    @Value("${token.secret}")
+//    private String tokenSecret;
+
+    private final Environment env;
+
+    public AuthenticationFilter(Environment env) {
+        this.env = env;
+    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
@@ -53,8 +62,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         CustomUserDetail userDetail = (CustomUserDetail)authResult.getPrincipal();
 
-        Signer signer = HMACSigner.newSHA256Signer(tokenSecret);
-        ZonedDateTime expirationDate = Instant.ofEpochMilli(System.currentTimeMillis() + tokenExpirationTime).atZone(ZoneId.systemDefault());
+        Signer signer = HMACSigner.newSHA256Signer(env.getProperty("token.secret"));
+        long expirationTime = Long.parseLong(env.getProperty("token.expiration_time"));
+        ZonedDateTime expirationDate = Instant.ofEpochMilli(System.currentTimeMillis() + expirationTime).atZone(ZoneId.systemDefault());
         JWT jwt = new JWT().setIssuer("")
                 .setSubject(userDetail.getUserId())
                 .setExpiration(expirationDate);

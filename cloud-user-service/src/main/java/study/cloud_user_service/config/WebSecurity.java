@@ -2,8 +2,11 @@ package study.cloud_user_service.config;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authorization.AuthorizationDecision;
@@ -31,10 +34,11 @@ public class WebSecurity {
     private static final String ALLOWED_IP_ADDRESS_MATCHER = "192.168.1.210";
 
     private final AuthenticationConfiguration authenticationConfiguration;
+    private final Environment env;
 
     @Bean
     public AuthenticationFilter authenticationFilter() throws Exception {
-        AuthenticationFilter filter = new AuthenticationFilter();
+        AuthenticationFilter filter = new AuthenticationFilter(env);
         filter.setAuthenticationManager(authenticationManager(authenticationConfiguration));
         return filter;
     }
