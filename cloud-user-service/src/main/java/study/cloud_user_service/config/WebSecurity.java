@@ -65,6 +65,7 @@ public class WebSecurity {
 //                    auth.requestMatchers(HttpMethod.POST, "/actuator/**").permitAll();
                     auth.requestMatchers(HttpMethod.POST, "/users/**", "/login").permitAll();
                     auth.requestMatchers("/users/**").permitAll();
+                    auth.requestMatchers("/h2-console/**").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .formLogin(AbstractHttpConfigurer::disable)
