@@ -1,0 +1,15 @@
+spring:
+ datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    # password: '{cipher}1e0d061142e9b5804af4456d96fb51ed8eaea5547edecffa4387be6a1ef152a0' <<<< 대칭키 사용
+    password: '{cipher}AQANBj4idH3iAOxleUhAeIPmsKYx22Bn+OFN42dXQHsPJV4tJ/nwbueZyJlcEIdo1PKUUkHjnZmVEHqL1s2zij96X/y3K11R75WpTJsQmMYlVd1OobAQnMIezv3msnXed1Wd6o4joEI0MQRs7CG/ZlD+2fm2uxAoqUnpAPRVW6Gvy6D5vqxKhBIumSwf4CK9Ym9c2aHJm1HxvLvVjbkrccLfYVcZae29V4IAEFIdlp4hgL00ikcHKBZLfYiuof5KSPPHzKQ3ovaZpQ0iRYCFX3/dpJpeQ3HenJid8NJOyxKb+LgTYQeL7tcxxtPAZoiTwuySq5bHocSLqDlLUlNO4dfbWKGXLTfoO0MHfoEcsXHKLM0cTKNI/5Bs7i337jlvUxw='
+    # {cipher}는 암호화 되었다고 알려주는 힌트
+    driver-class-name: org.h2.Driver
+
+token:
+  expiration_time: 86400000
+  secret: '{cipher}AQBeDyb71ZVQhIXQPd3BRHl5i2oO6kRZ3KTLHFIapSI3de0W3HI30DQ+uWcgLDo7XMfMrKEU1fVswX7GYRk4U7CjcbgJ92sxMD5+Ltsa6y7EMD++bm0669NPI94s253HSc8JyOrP1W4jEnjlvgUNVP0tQ7AbasOfUXB9zl7sOLjf3EO894sQ3koa71T+T3fOF0siH7xMFqL3fnXtlhq9PA1Z7H+OAJ6ef19X2Hl1nQKnMdO5jEHj/333TAgFv1xuwNiItsaU/q7Nr2v+JTxROVAciIC1iJvlzpLFvlzlqTXUiORfTyD4ErKlayLEH0/A73OSQAzCV2FLMRSONKevoSF61jBbQCT7igWB2K00BVMnlqQtLReIq4CxfAjtHx7tbL2dzqnCjea2NmzGgbg1v5+wD0XVyr0OHbvemG1TjX9g/Q=='
+
+gateway:
+  ip: 192.168.1.210
