@@ -2,7 +2,7 @@ spring:
  datasource:
     url: jdbc:h2:mem:testdb
     username: sa
-    password: '{cipher}1e0d061142e9b5804af4456d96fb51ed8eaea5547edecffa4387be6a1ef152a0_wrong'
+    password: '{cipher}1e0d061142e9b5804af4456d96fb51ed8eaea5547edecffa4387be6a1ef152a0'
     # {cipher}는 암호화 되었다고 알려주는 힌트
     driver-class-name: org.h2.Driver
 
