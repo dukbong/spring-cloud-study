@@ -13,3 +13,7 @@ spring:
 
 gateway:
   ip: 192.168.1.210
+
+
+order_service:
+  url: http://127.0.0.1:8000/order-service/%s/orders
