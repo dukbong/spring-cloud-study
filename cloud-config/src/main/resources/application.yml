@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: cloud-config
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
   cloud:
     config:
       server:
@@ -17,3 +24,10 @@ spring:
 #          private repo일 경우
 #          username: [username]
 #          password: [password]
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
