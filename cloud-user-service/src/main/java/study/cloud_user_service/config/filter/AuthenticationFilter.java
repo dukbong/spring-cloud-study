@@ -26,7 +26,6 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
 @Slf4j
-@RefreshScope
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 //    @Value("${token.expiration_time}")

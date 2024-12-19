@@ -61,17 +61,21 @@ spring:
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             - AuthorizationHeaderFilter
 
-
-
         - id: catalog-service
           uri: lb://CLOUD-CATALOG-SERVICE
           predicates:
             - Path=/catalog-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/catalog-service/(?<segment>.*), /$\{segment}
 
         - id: order-service
           uri: lb://CLOUD-ORDER-SERVICE
           predicates:
             - Path=/order-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
 
 #        예제-------------------------------------------------------------
         - id: first-service
