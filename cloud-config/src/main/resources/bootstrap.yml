@@ -1,2 +1,16 @@
 encrypt:
-  key: qwerasdfzxcvasdfqwer0123456789
+#  key: qwerasdfzxcvasdfqwer0123456789
+  key-store:
+    location: file:///c:/spring-cloud-study/keystore/apiEncryptionKey.jks
+    password: test1234  # keystore 비밀번호
+    alias: apiEncryptionKey    # keystore 내에서 사용할 키의 alias
+
+#$ keytool -list -keystore publicKey.jks
+#Enter keystore password:  test1234 <- [password]
+#Keystore type: PKCS12
+#Keystore provider: SUN
+
+#  Your keystore contains 1 entry
+
+#  trustserver <- [alias], 2024. 12. 19., trustedCertEntry,
+#Certificate fingerprint (SHA-256): 77:F4:C4:79:33:64:2A:B2:2C:77:B2:40:B6:78:7D:
