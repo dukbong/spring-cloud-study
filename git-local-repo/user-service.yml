@@ -1,11 +1,11 @@
 spring:
  datasource:
-    url: jdbc:h2:mem:testdb
-    username: sa
+    url: jdbc:mysql://localhost:3306/test_db
+    username: jangto
     # password: '{cipher}1e0d061142e9b5804af4456d96fb51ed8eaea5547edecffa4387be6a1ef152a0' <<<< 대칭키 사용
-    password: '{cipher}AQANBj4idH3iAOxleUhAeIPmsKYx22Bn+OFN42dXQHsPJV4tJ/nwbueZyJlcEIdo1PKUUkHjnZmVEHqL1s2zij96X/y3K11R75WpTJsQmMYlVd1OobAQnMIezv3msnXed1Wd6o4joEI0MQRs7CG/ZlD+2fm2uxAoqUnpAPRVW6Gvy6D5vqxKhBIumSwf4CK9Ym9c2aHJm1HxvLvVjbkrccLfYVcZae29V4IAEFIdlp4hgL00ikcHKBZLfYiuof5KSPPHzKQ3ovaZpQ0iRYCFX3/dpJpeQ3HenJid8NJOyxKb+LgTYQeL7tcxxtPAZoiTwuySq5bHocSLqDlLUlNO4dfbWKGXLTfoO0MHfoEcsXHKLM0cTKNI/5Bs7i337jlvUxw='
+    password: '{cipher}AQC2bpMutE5M35923lt0Mq+lF1NPk7cSz1oTPflilQfXyShzxArYVUGcaCrRnp5d97WLyhp4yN2Sm+L0G6caP5OloLVSIEqLKyT9Ih1siw5u3rJNsRpyhNSlx7kq2RI/p/EgwTREMf/4wKHH1nHnX3q+hU6BUWtV7IFSX7frTPrulKKcMuZiOgeyg8nPdjQhLIL5pCUuQYk8z7YAUl8b2a2plvfcjiz/t036oLEqNDuGIHUyoAJhsnSqFjQjSIVSWIbiUh7b1iHu/whs3CxigCNw55bLxtbXyZa7ej8pFfZCqFo6fsJ04HtQYNVtjRvmsnnOrDFFYPbnV/SMxuDaC6NZ1Bf3lyH4vu1fA96jZvykJVbOHW7sd/xX03tuneQtm50='
     # {cipher}는 암호화 되었다고 알려주는 힌트
-    driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.jdbc.Driver
 
 # token:
 #   expiration_time: 86400000

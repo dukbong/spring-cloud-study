@@ -6,10 +6,10 @@ spring:
     name: cloud-order-service
 
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test_db
+    username: jangto
+    password: jangto_password
 
   h2:
     console:

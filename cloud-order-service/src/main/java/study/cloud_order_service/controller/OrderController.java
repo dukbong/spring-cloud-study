@@ -36,6 +36,4 @@ public class OrderController {
         return ResponseEntity.ok().body(new OrderResponseType<>(result));
     }
 
-
-
 }
