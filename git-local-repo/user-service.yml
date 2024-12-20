@@ -1,6 +1,6 @@
 spring:
  datasource:
-    url: jdbc:mysql://localhost:3306/test_db
+    url: jdbc:mysql://localhost:3307/test_db
     username: jangto
     # password: '{cipher}1e0d061142e9b5804af4456d96fb51ed8eaea5547edecffa4387be6a1ef152a0' <<<< 대칭키 사용
     password: '{cipher}AQC2bpMutE5M35923lt0Mq+lF1NPk7cSz1oTPflilQfXyShzxArYVUGcaCrRnp5d97WLyhp4yN2Sm+L0G6caP5OloLVSIEqLKyT9Ih1siw5u3rJNsRpyhNSlx7kq2RI/p/EgwTREMf/4wKHH1nHnX3q+hU6BUWtV7IFSX7frTPrulKKcMuZiOgeyg8nPdjQhLIL5pCUuQYk8z7YAUl8b2a2plvfcjiz/t036oLEqNDuGIHUyoAJhsnSqFjQjSIVSWIbiUh7b1iHu/whs3CxigCNw55bLxtbXyZa7ej8pFfZCqFo6fsJ04HtQYNVtjRvmsnnOrDFFYPbnV/SMxuDaC6NZ1Bf3lyH4vu1fA96jZvykJVbOHW7sd/xX03tuneQtm50='
