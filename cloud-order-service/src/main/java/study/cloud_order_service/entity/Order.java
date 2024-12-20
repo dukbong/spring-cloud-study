@@ -9,10 +9,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@SequenceGenerator(name = "orders_sequence_generator", sequenceName = "orders_sequence")
 @Table(name = "orders")
 public class Order extends Base{
 
-    @Id @GeneratedValue
+//    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_sequence_generator")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 120)
@@ -29,6 +31,9 @@ public class Order extends Base{
     @Column(nullable = false, unique = true)
     private String orderId;
 
+    @Transient
+    private WorkStatus workStatus;
+
     @Builder
     private Order(String productId, Integer qty, Integer unitPrice, Integer totalPrice, String userId, String orderId) {
         this.productId = productId;
@@ -37,5 +42,10 @@ public class Order extends Base{
         this.totalPrice = totalPrice;
         this.userId = userId;
         this.orderId = orderId;
+    }
+
+    public Order setWorkStatus(WorkStatus workStatus) {
+        this.workStatus = workStatus;
+        return this;
     }
 }

@@ -1,5 +1,6 @@
 package study.cloud_order_service.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import study.cloud_order_service.dto.OrderDto;
 import study.cloud_order_service.response.OrderInfo;
 

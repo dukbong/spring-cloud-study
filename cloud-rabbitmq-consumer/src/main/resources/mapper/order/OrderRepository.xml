@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study.cloud_rabbitmq_consumer.repository.OrderRepository">
+
+    <insert id="createOrder" parameterType="study.cloud_rabbitmq_consumer.dao.Order" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO orders (product_id, qty, unit_price, total_price, user_id, order_id, created_date, last_modified_date)
+        VALUES (#{productId}, #{qty}, #{unitPrice}, #{totalPrice}, #{userId}, #{orderId}, NOW(), NOW())
+    </insert>
+</mapper>

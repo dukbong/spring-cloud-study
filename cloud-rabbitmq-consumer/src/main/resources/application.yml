@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: cloud-rabbitmq-consumer
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_db
+    username: jangto
+    password: jangto_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true # 해당 설정을 통해 낙타봉 표기법 매칭시킨다.

@@ -11,7 +11,7 @@ import study.cloud_user_service.template.GetOrderResponseWrapper;
 
 import java.util.List;
 
-@FeignClient(name = "cloud-order-service", configuration = FeignConfig.class)
+@FeignClient(name = "cloud-order-service")
 // 여기서 name 은 application.name을 의미한다.
 public interface OrderServiceClient {
 
